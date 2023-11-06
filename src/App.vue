@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { onLaunch, onShow, onHide } from "@dcloudio/uni-app";
+import { onHide, onLaunch, onShow } from '@dcloudio/uni-app'
+
 onLaunch(() => {
-  console.log("App Launch");
-});
+  console.log('App Launch') // eslint-disable-line no-console
+})
 onShow(() => {
-  console.log("App Show");
-});
+  console.log('App Show') // eslint-disable-line no-console
+})
 onHide(() => {
-  console.log("App Hide");
-});
+  console.log('App Hide') // eslint-disable-line no-console
+})
 </script>
+
 <style></style>
