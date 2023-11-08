@@ -57,7 +57,7 @@ function showToast(msg: string) {
 // 创建请求实例
 const instance = ajax.create({
   // 初始配置
-  baseURL: '',
+  baseURL: baseConfig.api.base,
   header: {
     'Content-Type': 'application/json',
   },
