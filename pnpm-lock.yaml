@@ -32,6 +32,7 @@ specifiers:
   pinia: 2.0.36
   sass: ^1.69.5
   typescript: ^4.9.4
+  uni-ajax: ^2.5.1
   uview-plus: ^3.1.38
   vite: 4.1.4
   vue: ^3.2.45
@@ -55,6 +56,7 @@ dependencies:
   clipboard: 2.0.11
   dayjs: 1.11.10
   pinia: 2.0.36_typescript@4.9.5+vue@3.3.8
+  uni-ajax: 2.5.1
   uview-plus: 3.1.38
   vue: 3.3.8_typescript@4.9.5
   vue-i18n: 9.6.5_vue@3.3.8
@@ -7232,6 +7234,10 @@ packages:
   /undici-types/5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
+
+  /uni-ajax/2.5.1:
+    resolution: {integrity: sha512-xmJY/yl5eRAb0b2qujTS1XNYhkSRWGL4PwkYqQrLpH2BMa2v/2zCJtqcTVUmqn4qQtdP3vLoFL86vaH3ABYAZA==}
+    dev: false
 
   /unicode-canonical-property-names-ecmascript/2.0.0:
     resolution: {integrity: sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ==}
