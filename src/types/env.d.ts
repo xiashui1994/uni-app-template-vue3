@@ -8,9 +8,3 @@ declare module '*.vue' {
 }
 
 declare module 'uview-plus'
-
-declare let baseConfig: {
-  api: {
-    base: string
-  }
-}

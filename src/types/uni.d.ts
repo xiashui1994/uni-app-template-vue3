@@ -4,6 +4,11 @@ declare global {
   interface Uni {
     $http: AjaxInstance<AjaxRequestConfig>
   }
+  const baseConfig: {
+    api: {
+      base: string
+    }
+  }
 }
 
 declare module 'uni-ajax' {
