@@ -1,9 +1,11 @@
 import path from 'node:path'
+import process from 'node:process'
 import { defineConfig } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import inject from '@rollup/plugin-inject'
 import AutoImport from 'unplugin-auto-import/vite'
+import { compression } from 'vite-plugin-compression2'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
@@ -43,6 +45,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         ],
         dts: 'src/types/auto-imports.d.ts',
       }),
+      process.env.UNI_PLATFORM === 'h5' && compression(),
     ],
   }
 })
