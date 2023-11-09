@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { onHide, onLaunch, onShow } from '@dcloudio/uni-app'
+import { checkUpdate } from './utils'
 
 onLaunch(() => {
-  console.log('App Launch') // eslint-disable-line no-console
+  // #ifndef H5
+  checkUpdate() // 小程序检测版本升级
+  // #endif
 })
-onShow(() => {
-  console.log('App Show') // eslint-disable-line no-console
-})
-onHide(() => {
-  console.log('App Hide') // eslint-disable-line no-console
-})
+
+onShow(() => {})
+
+onHide(() => {})
 </script>
 
 <style lang="scss">

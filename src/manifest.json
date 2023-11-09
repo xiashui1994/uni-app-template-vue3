@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "uni-app",
   "appid": "",
-  "description": "",
+  "description": "uni-app",
   "versionName": "1.0.0",
   "versionCode": "100",
   "transformPx": false,
@@ -52,9 +52,17 @@
   "mp-weixin": {
     "appid": "",
     "setting": {
-      "urlCheck": false
+      "urlCheck": false,
+      "es6": true,
+      "postcss": true,
+      "minified": true,
+      "minifyWXML": true
     },
-    "usingComponents": true
+    "usingComponents": true,
+    "optimization": {
+      "subPackages": true
+    },
+    "lazyCodeLoading": "requiredComponents"
   },
   "mp-alipay": {
     "usingComponents": true
@@ -64,6 +72,13 @@
   },
   "mp-toutiao": {
     "usingComponents": true
+  },
+  "h5": {
+    "optimization": {
+      "treeShaking": {
+        "enable": true
+      }
+    }
   },
   "uniStatistics": {
     "enable": false
