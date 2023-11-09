@@ -1,5 +1,5 @@
 export default {
   api: {
-    base: 'http://localhost:4000',
+    base: 'https://mock.apifox.com/m1/3563194-0-default',
   },
 }

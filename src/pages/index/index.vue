@@ -1,20 +1,30 @@
 <template>
   <view class="content">
     <image class="logo" src="/static/logo.png" />
+    <u-button type="success" text="发送请求" :custom-style="{ width: '300rpx' }" @click="getDemo" />
     <view class="text-area">
+      <view class="title">
+        请求数据示例:
+      </view>
       <text class="title">
-        {{ title }}
+        {{ demoData.text || '暂无数据' }}
       </text>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
-const title = ref('Hello')
+const demoData = ref({})
+
+async function getDemo() {
+  const res = await uni.$http.get('/v1/demo')
+  demoData.value = res.data
+}
 </script>
 
 <style lang="scss" scoped>
 .content {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,10 +38,8 @@ const title = ref('Hello')
     margin-bottom: 50rpx;
   }
   .text-area {
-    display: flex;
-    justify-content: center;
+    margin-top: 30rpx;
   }
-
   .title {
     font-size: 36rpx;
     color: #8f8f94;

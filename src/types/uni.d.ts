@@ -13,9 +13,9 @@ declare global {
 
 declare module 'uni-ajax' {
   interface CustomConfig {
-    custom: {
-      loading: boolean
-      error: boolean
+    custom?: {
+      loading?: boolean
+      error?: boolean
     }
   }
 }

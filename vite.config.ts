@@ -14,7 +14,12 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       host: true,
       port: 8080,
       open: true,
-      proxy: {},
+      proxy: {
+        '/v1': {
+          target: 'https://mock.apifox.com/m1/3563194-0-default',
+          changeOrigin: true,
+        },
+      },
     },
     build: {
       minify: 'terser',

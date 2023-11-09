@@ -34,10 +34,11 @@ const saveCookie = (cookie: string) => cookie && uni.setStorageSync('cookie', co
  */
 function handleCode(response: AjaxResponse<any>) {
   const { data } = response
-  const code = data.code || data.Code || null
+  const code = data.code ?? data.Code ?? null
   const status: { [key: string]: () => any } = {
     0: () => data,
   }
+  uni.hideLoading()
   return status[code]?.() ?? Promise.reject(data)
 }
 
