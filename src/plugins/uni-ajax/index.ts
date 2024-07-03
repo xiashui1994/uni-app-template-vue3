@@ -103,7 +103,7 @@ instance.interceptors.response.use(
     }
     catch (err: any) {
       uni.hideLoading()
-      response.config.custom.error && showToast(err.msg || err.Msg || err.message || JSON.stringify(err).replace(/\"/g, ''))
+      response.config.custom.error && showToast(err.msg || err.Msg || err.message || JSON.stringify(err).replace(/"/g, ''))
       return Promise.reject(err)
     }
   },

@@ -16,7 +16,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       open: true,
       proxy: {
         '/v1': {
-          target: 'https://mock.apifox.com/m1/3563194-0-default',
+          target: 'https://apifoxmock.com/m1/3563194-0-default',
           changeOrigin: true,
         },
       },

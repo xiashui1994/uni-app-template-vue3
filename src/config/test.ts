@@ -1,5 +1,5 @@
 export default {
   api: {
-    base: 'https://mock.apifox.com/m1/3563194-0-default',
+    base: 'https://apifoxmock.com/m1/3563194-0-default',
   },
 }
