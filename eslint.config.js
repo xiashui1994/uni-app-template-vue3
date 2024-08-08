@@ -7,6 +7,10 @@ module.exports = antfu({
         order: ['template', 'script', 'style'],
       }],
     },
+    typescript: {
+      'ts/no-unused-expressions': 'off',
+      'ts/no-empty-object-type': 'off',
+    },
   },
   ignores: [
     'dist/*',

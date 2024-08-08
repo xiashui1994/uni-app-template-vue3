@@ -7,47 +7,49 @@
 // 引入 uni-ajax 模块
 import ajax from 'uni-ajax'
 import type { AjaxResponse } from 'uni-ajax'
+import Loading from './loading'
+
+const loading = new Loading()
 
 /**
- * 获取token
- * @returns {string} token
+ * 获取 token
+ * @returns token
  */
-const getToken = () => uni.getStorageSync('token')
+const getToken = (): string => uni.getStorageSync('token')
 
 /**
- * 获取cookie
- * @returns {string} cookie
+ * 获取 cookie
+ * @returns cookie
  */
-const getCookie = () => uni.getStorageSync('cookie')
+const getCookie = (): string => uni.getStorageSync('cookie')
 
 /**
- * 保存cookie
- * @param {string} cookie
- * @returns {void}
+ * 保存 cookie
+ * @param cookie
  */
-const saveCookie = (cookie: string) => cookie && uni.setStorageSync('cookie', cookie)
+const saveCookie = (cookie: string): void | string => cookie && uni.setStorageSync('cookie', cookie)
 
 /**
  * 处理响应数据
- * @param {object} response 响应数据
- * @returns {object} 响应数据
+ * @param response 响应数据
+ * @returns 响应数据
  */
-function handleCode(response: AjaxResponse<any>) {
+function handleCode(response: AjaxResponse<any>): Promise<any> {
   const { data } = response
-  const code = data.code ?? data.Code ?? null
+  const code = data.code ?? data.Code
   const status: { [key: string]: () => any } = {
     0: () => data,
   }
-  uni.hideLoading()
+  loading.hide()
   return status[code]?.() ?? Promise.reject(data)
 }
 
 /**
  * 显示消息提示框
- * @param {string} msg
- * @returns {Promise<any>} 提示框信息
+ * @param msg
+ * @returns 提示框信息
  */
-function showToast(msg: string) {
+function showToast(msg: string): Promise<any> {
   return uni.showToast({
     title: msg,
     icon: 'none',
@@ -71,39 +73,37 @@ const instance = ajax.create({
 
 /**
  * 请求拦截器
- * @param {object} config 发送请求的配置数据
- * @param {object} error 发送请求的错误信息
- * @returns {Promise | object}
+ * @param config 发送请求的配置数据
+ * @param error 发送请求的错误信息
  */
 instance.interceptors.request.use(
   (config) => {
-    config.custom.loading && uni.showLoading({ title: '加载中', mask: true }) // 请求配置中的custom自定义参数中loading为true则显示loading
-    getToken() && (config.header.token = getToken()) // 有token则在请求头中携带token
-    getCookie() && (config.header.cookie = getCookie()) // 有cookie则在请求头中携带cookie，h5中浏览器默认携带cookie，此方法不生效，小程序中需手动携带cookie
+    loading.show(config.custom?.loading) // 请求配置中的 custom 自定义参数中 loading 为 true 则显示 loading
+    getToken() && (config.header.token = getToken()) // 有 token 则在请求头中携带 token
+    getCookie() && (config.header.cookie = getCookie()) // 有 cookie 则在请求头中携带 cookie，h5 中浏览器默认携带 cookie，此方法不生效，小程序中需手动携带 cookie
     return config
   },
   (error) => {
     showToast(error)
-    uni.hideLoading()
+    loading.hide()
     return Promise.reject(error)
   },
 )
 
 /**
  * 响应拦截器
- * @param {object} response 响应数据
- * @param {object} error 响应错误信息
- * @returns {Promise}
+ * @param response 响应数据
+ * @param error 响应错误信息
  */
 instance.interceptors.response.use(
   async (response) => {
-    saveCookie(response.header['set-cookie'] || response.header['Set-Cookie']) // 手动种cookie，h5中浏览器自动种cookie，小程序中需手动中cookie
+    saveCookie(response.header['set-cookie'] || response.header['Set-Cookie']) // 手动种 cookie，h5 中浏览器自动种 cookie，小程序中需手动中 cookie
     try {
       return await handleCode(response)
     }
     catch (err: any) {
-      uni.hideLoading()
-      response.config.custom.error && showToast(err.msg || err.Msg || err.message || JSON.stringify(err).replace(/"/g, ''))
+      loading.hide()
+      response.config.custom?.error && showToast(err.msg || err.Msg || err.message || JSON.stringify(err).replace(/"/g, ''))
       return Promise.reject(err)
     }
   },

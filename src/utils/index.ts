@@ -1,5 +1,5 @@
 // 小程序检测版本升级
-export function checkUpdate() {
+export function checkUpdate(): void {
   const updateManager = uni.getUpdateManager()
   updateManager.onCheckForUpdate((res) => {
     // 请求完新版本信息的回调
