@@ -6,6 +6,7 @@ import uni from '@dcloudio/vite-plugin-uni'
 import inject from '@rollup/plugin-inject'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
+import legacy from '@vitejs/plugin-legacy'
 import { compression } from 'vite-plugin-compression2'
 
 // https://vitejs.dev/config/
@@ -51,6 +52,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           'pinia',
         ],
         dts: 'src/types/auto-imports.d.ts',
+      }),
+      process.env.UNI_PLATFORM === 'h5' && legacy({
+        targets: ['defaults', 'not IE 11', 'chromeAndroid>=52, iOS>=13.1'],
       }),
       process.env.UNI_PLATFORM === 'h5' && compression({
         include: /\.(js|html|css|jpg|jpeg|png|svg)$/, // 需要压缩的文件类型
