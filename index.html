@@ -2,6 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <% if (process.env.NODE_ENV === 'development' && process.env.UNI_PLATFORM === 'h5') { %>
+      <meta name="referrer" content="never" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/eruda/3.0.1/eruda.min.js"></script>
+      <script>eruda.init();</script>
+    <% } %>
     <script>
       var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
         CSS.supports('top: constant(a)'))

@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import inject from '@rollup/plugin-inject'
+import { createHtmlPlugin } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
 import { compression } from 'vite-plugin-compression2'
 
@@ -29,7 +30,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           drop_console: mode === 'production',
         },
       },
-      sourcemap: mode !== 'production',
+      sourcemap: mode === 'development',
       reportCompressedSize: false,
     },
     plugins: [
@@ -37,6 +38,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       inject({
         baseConfig: path.resolve(__dirname, `src/config/${mode}`),
       }),
+      createHtmlPlugin(),
       AutoImport({
         include: [
           /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -50,7 +52,10 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         ],
         dts: 'src/types/auto-imports.d.ts',
       }),
-      process.env.UNI_PLATFORM === 'h5' && compression(),
+      process.env.UNI_PLATFORM === 'h5' && compression({
+        include: /\.(js|html|css|jpg|jpeg|png|svg)$/, // 需要压缩的文件类型
+        threshold: 10240, // 对超过 10kb 的数据进行压缩
+      }),
     ],
   }
 })
