@@ -1,4 +1,7 @@
 const antfu = require('@antfu/eslint-config').default
+const { FlatCompat } = require('@eslint/eslintrc')
+
+const compat = new FlatCompat()
 
 module.exports = antfu({
   overrides: {
@@ -18,4 +21,13 @@ module.exports = antfu({
     'node_modules/*',
     'src/uni_modules/*',
   ],
-})
+}, ...compat.config({
+  globals: {
+    uni: true,
+    jWeixin: true,
+    wx: true,
+    plus: true,
+    getApp: true,
+    baseConfig: true,
+  },
+}))
