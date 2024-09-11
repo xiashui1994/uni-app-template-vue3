@@ -37,5 +37,6 @@ button::after {
   overflow: hidden;
   -webkit-box-orient: vertical;
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
 }
