@@ -28,6 +28,6 @@ module.exports = antfu({
     wx: true,
     plus: true,
     getApp: true,
-    baseConfig: true,
+    feConfig: true,
   },
 }))

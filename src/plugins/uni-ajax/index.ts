@@ -60,7 +60,7 @@ function showToast(msg: string): Promise<any> {
 // 创建请求实例
 const instance = ajax.create({
   // 初始配置
-  baseURL: baseConfig.api.base,
+  baseURL: feConfig.api.base,
   header: {
     'Content-Type': 'application/json',
   },

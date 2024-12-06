@@ -4,7 +4,7 @@ declare global {
   interface Uni {
     $http: AjaxInstance<AjaxRequestConfig>
   }
-  const baseConfig: {
+  const feConfig: {
     api: {
       base: string
     }

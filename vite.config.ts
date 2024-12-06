@@ -37,7 +37,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     plugins: [
       uni(),
       inject({
-        baseConfig: path.resolve(__dirname, `src/config/${mode}`),
+        feConfig: path.resolve(__dirname, `src/config/${mode}`),
       }),
       createHtmlPlugin(),
       AutoImport({
