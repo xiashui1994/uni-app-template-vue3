@@ -5,7 +5,8 @@ import type { ConfigEnv, UserConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import inject from '@rollup/plugin-inject'
 import { createHtmlPlugin } from 'vite-plugin-html'
-import AutoImport from 'unplugin-auto-import/vite'
+import vitePluginRequire from 'vite-plugin-require'
+import autoImport from 'unplugin-auto-import/vite'
 import legacy from '@vitejs/plugin-legacy'
 import { compression } from 'vite-plugin-compression2'
 
@@ -40,7 +41,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         feConfig: path.resolve(__dirname, `src/config/${mode}`),
       }),
       createHtmlPlugin(),
-      AutoImport({
+      vitePluginRequire(),
+      autoImport({
         include: [
           /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
           /\.vue$/,
