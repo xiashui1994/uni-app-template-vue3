@@ -13,6 +13,7 @@ module.exports = antfu({
     typescript: {
       'ts/no-unused-expressions': 'off',
       'ts/no-empty-object-type': 'off',
+      'ts/no-require-imports': 'off',
     },
   },
   ignores: [
