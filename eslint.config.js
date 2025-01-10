@@ -9,11 +9,15 @@ module.exports = antfu({
       'vue/block-order': ['error', {
         order: ['template', 'script', 'style'],
       }],
+      'vue/no-template-shadow': 'off',
     },
     typescript: {
       'ts/no-unused-expressions': 'off',
       'ts/no-empty-object-type': 'off',
       'ts/no-require-imports': 'off',
+    },
+    stylistic: {
+      'style/max-statements-per-line': 'off',
     },
   },
   ignores: [

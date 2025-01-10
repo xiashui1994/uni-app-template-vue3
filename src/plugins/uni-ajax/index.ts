@@ -107,7 +107,10 @@ instance.interceptors.response.use(
       return Promise.reject(err)
     }
   },
-  error => Promise.reject(error),
+  (error) => {
+    loading.hide()
+    return Promise.reject(error)
+  },
 )
 
 // 导出 create 创建后的实例

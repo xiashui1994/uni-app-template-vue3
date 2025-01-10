@@ -9,6 +9,7 @@ image {
 }
 
 view,
+scroll-view,
 cover-view {
   box-sizing: border-box;
 }
@@ -23,6 +24,25 @@ button::after {
   width: 0;
   height: 0;
   color: transparent;
+}
+
+/* 公用样式 */
+.flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flex-row-start {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /*单行溢出*/
