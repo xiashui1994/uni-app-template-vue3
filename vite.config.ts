@@ -56,6 +56,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         dts: 'src/types/auto-imports.d.ts',
       }),
       process.env.UNI_PLATFORM === 'h5' && legacy({
+        modernPolyfills: true,
+        additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
         targets: ['defaults', 'not IE 11', 'chromeAndroid>=52, iOS>=13.1'],
       }),
       process.env.UNI_PLATFORM === 'h5' && compression({
