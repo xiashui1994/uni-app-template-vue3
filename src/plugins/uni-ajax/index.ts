@@ -97,7 +97,7 @@ instance.interceptors.request.use(
  */
 instance.interceptors.response.use(
   async (response) => {
-    saveCookie(response.header['set-cookie'] || response.header['Set-Cookie']) // 手动种 cookie，h5 中浏览器自动种 cookie，小程序中需手动中 cookie
+    saveCookie(response.header['set-cookie'] || response.header['Set-Cookie']) // 手动种 cookie，h5 中浏览器自动种 cookie，小程序中需手动种 cookie
     try {
       return await handleCode(response)
     }

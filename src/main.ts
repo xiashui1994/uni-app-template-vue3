@@ -13,6 +13,10 @@ export function createApp() {
 
   app.use(uviewPlus)
 
+  // hack: uview plus timeFormat bug
+  const timeFormat = uni.$u.timeFormat
+  uni.$u.timeFormat = (time: Date, format: string) => timeFormat(new Date(time), format)
+
   return {
     app,
   }
