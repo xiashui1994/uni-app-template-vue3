@@ -81,6 +81,8 @@ instance.interceptors.request.use(
     loading.show(config.custom?.loading) // 请求配置中的 custom 自定义参数中 loading 为 true 则显示 loading
     getToken() && (config.header.token = getToken()) // 有 token 则在请求头中携带 token
     getCookie() && (config.header.cookie = getCookie()) // 有 cookie 则在请求头中携带 cookie，h5 中浏览器默认携带 cookie，此方法不生效，小程序中需手动携带 cookie
+    if (config.data)
+      config.data = Object.fromEntries(Object.entries(config.data).filter(([_, value]) => value !== undefined)) // 过滤空数据
     return config
   },
   (error) => {
