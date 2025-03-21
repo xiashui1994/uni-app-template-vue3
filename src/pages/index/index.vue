@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-const demoData = ref({})
+const demoData = ref({ text: '' })
 
 async function getDemo() {
   const res = await uni.$http.get('/v1/demo')
