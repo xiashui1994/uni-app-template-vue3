@@ -3,12 +3,8 @@
     <image class="logo" src="/static/logo.png" />
     <u-button type="success" text="发送请求" :custom-style="{ width: '300rpx' }" @click="getDemo" />
     <view class="text-area">
-      <view class="title">
-        请求数据示例:
-      </view>
-      <text class="title">
-        {{ demoData.text || '暂无数据' }}
-      </text>
+      <view class="title">请求数据示例:</view>
+      <text class="title">{{ demoData.text || '暂无数据' }}</text>
     </view>
   </view>
 </template>

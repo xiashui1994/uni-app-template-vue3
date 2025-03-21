@@ -4,9 +4,9 @@
  * 插件市场: https://ext.dcloud.net.cn/plugin?id=2351
  */
 
+import type { AjaxResponse } from 'uni-ajax'
 // 引入 uni-ajax 模块
 import ajax from 'uni-ajax'
-import type { AjaxResponse } from 'uni-ajax'
 import Loading from './loading'
 
 const loading = new Loading()

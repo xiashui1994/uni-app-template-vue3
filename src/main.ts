@@ -1,8 +1,8 @@
-import { createSSRApp } from 'vue'
-import uviewPlus from 'uview-plus'
-import App from './App.vue'
-import { setupStore } from '@/store'
 import ajax from '@/plugins/uni-ajax'
+import { setupStore } from '@/store'
+import uviewPlus from 'uview-plus'
+import { createSSRApp } from 'vue'
+import App from './App.vue'
 
 uni.$http = ajax
 

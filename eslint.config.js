@@ -10,6 +10,7 @@ module.exports = antfu({
         order: ['template', 'script', 'style'],
       }],
       'vue/no-template-shadow': 'off',
+      'vue/singleline-html-element-content-newline': 'off',
     },
     typescript: {
       'ts/no-unused-expressions': 'off',
@@ -19,6 +20,9 @@ module.exports = antfu({
     stylistic: {
       'style/max-statements-per-line': 'off',
     },
+  },
+  rules: {
+    'import/order': 'off',
   },
   ignores: [
     'dist/*',

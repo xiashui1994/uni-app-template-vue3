@@ -1,14 +1,14 @@
+import type { ConfigEnv, UserConfig } from 'vite'
 import path from 'node:path'
 import process from 'node:process'
-import { defineConfig } from 'vite'
-import type { ConfigEnv, UserConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import inject from '@rollup/plugin-inject'
+import legacy from '@vitejs/plugin-legacy'
+import autoImport from 'unplugin-auto-import/vite'
+import { defineConfig } from 'vite'
+import { compression } from 'vite-plugin-compression2'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import vitePluginRequire from 'vite-plugin-require'
-import autoImport from 'unplugin-auto-import/vite'
-import legacy from '@vitejs/plugin-legacy'
-import { compression } from 'vite-plugin-compression2'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
